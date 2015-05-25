@@ -8,6 +8,7 @@ using AVFoundation;
 using CoreMedia;
 using CoreFoundation;
 using System.Threading.Tasks;
+using CoreGraphics;
 
 namespace VideoDemo.iOS
 {
@@ -86,16 +87,27 @@ namespace VideoDemo.iOS
             slider.ValueChanged += slider_ValueChanged;            
             playpauseButton.TouchUpInside += playpauseButton_TouchUpInside;
 
-            UIDevice.Notifications.ObserveOrientationDidChange((s, e) =>
-            {
-                _playerLayer.Frame = this.playerView.Frame;
-            });
+            //UIDevice.Notifications.ObserveOrientationDidChange((s, e) =>
+            //{
+                
+            //});
 
             playing = true;
             _player.Play();
 		}
 
+        public override void ViewWillLayoutSubviews()
+        {
+            base.ViewWillLayoutSubviews();
+
+            //_playerLayer.Frame = new CGRect(this.playerView.Frame.X, this.playerView.Frame.Y, this.playerView.Frame.Width, this.playerView.Frame.Height);
+        }
        
+        public void UpdateVideoFrame()
+        {
+            _playerLayer.Frame = new CGRect(this.playerView.Frame.X, this.playerView.Frame.Y, this.playerView.Frame.Width, this.playerView.Frame.Height);
+
+        }
 
         public override void ViewWillAppear(bool animated)
         {
