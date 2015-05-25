@@ -33,24 +33,7 @@ namespace VideoDemo.iOS.Renderers
             view.ConstrainLayout(() => this.playerController.View.Top() == view.Top() &&
                                         this.playerController.View.Left() == view.Left() &&
                                         this.playerController.View.Right() == view.Right() &&
-                                        this.playerController.View.Bottom() == view.Bottom());
-
-            //UIDevice.Notifications.ObserveOrientationDidChange((s, e) =>
-            //{
-            //    Device.StartTimer(TimeSpan.FromSeconds(0.3), () =>
-            //    {
-            //        Device.BeginInvokeOnMainThread(() =>
-            //        {
-
-            //            var nativeViewFrame = view.Frame;
-            //            var viewFrame = this.View.Frame;
-            //            Console.Write(nativeViewFrame);
-            //        });
-
-            //        return false;
-            //    });
-                
-            //});
+                                        this.playerController.View.Bottom() == view.Bottom());           
         }
 
 
