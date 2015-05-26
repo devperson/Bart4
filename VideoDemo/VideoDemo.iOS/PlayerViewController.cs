@@ -18,8 +18,7 @@ namespace VideoDemo.iOS
 
         Boolean playing, scrubInFlight, seekToZeroBeforePlaying;        
         float lastScrubSliderValue,playRateToRestore;        
-        NSObject observer, timeObserver;
-        NSTimer progressTimer;
+        NSObject timeObserver;        
         public static NSString StatusObservationContext = new NSString("AVCustomEditPlayerViewControllerStatusObservationContext");
         public static NSString RateObservationContext = new NSString("AVCustomEditPlayerViewControllerRateObservationContext");
 
@@ -68,7 +67,7 @@ namespace VideoDemo.iOS
 
             _playerItem.SeekingWaitsForVideoCompositionRendering = true;
             _playerItem.AddObserver(this, "status", NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Initial, StatusObservationContext.Handle);
-            observer = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, (notification) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, (notification) =>
             {
                 Console.WriteLine("Seek Zero = true");
                 seekToZeroBeforePlaying = true;
